@@ -5,14 +5,19 @@
  *  Author: GAGHL
  */ 
 
-
 #ifndef GAGHL_AVR_GPIO_H_
 #define GAGHL_AVR_GPIO_H_
 
 #include <avr/io.h>
 
-#define HIGH 1
-#define LOW  0
+#define INPUT  0
+#define OUTPUT 1
+
+#define HIGH   1
+#define LOW    0
+
+#define PU     1
+#define TRI    0
 
 typedef enum{
 	PA_0,PA_1,PA_2,PA_3,PA_4,PA_5,PA_6,PA_7,
@@ -23,8 +28,11 @@ typedef enum{
 	PF_0,PF_1,PF_2,PF_3,PF_4,PF_5,PF_6,PF_7
 }Pin_num;
 
+void gpioDir(uint8_t Pin_num, uint8_t Pin_dir, uint8_t io_stat);
+
 void digitalWrite(uint8_t Pin_num, uint8_t Pin_val);
 
+int8_t digitalRead(uint8_t Pin_num);
 
 
 #endif //GAGHL_AVR_GPIO
