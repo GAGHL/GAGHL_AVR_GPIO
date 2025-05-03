@@ -28,7 +28,7 @@ typedef enum{
 	PF_0,PF_1,PF_2,PF_3,PF_4,PF_5,PF_6,PF_7
 }Pin_num;
 
-void gpioDir(uint8_t Pin_num, uint8_t Pin_dir, uint8_t io_stat);
+void pinMode(uint8_t Pin_num, uint8_t Pin_dir, uint8_t io_stat);
 
 void digitalWrite(uint8_t Pin_num, uint8_t Pin_val);
 

@@ -7,7 +7,7 @@
 
 #include "GAGHL_AVR_GPIO.h"
 
-void gpioDir(uint8_t Pin_num,uint8_t Pin_dir, uint8_t io_stat){
+void pinMode(uint8_t Pin_num,uint8_t Pin_dir, uint8_t io_stat){
 	#ifdef DDRA
 	if(Pin_num<=7){                                                  //PORTA
 		if(Pin_dir){
