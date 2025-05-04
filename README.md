@@ -1,10 +1,10 @@
 # GAGHL_AVR_GPIO
 AVR GPIO
 
-digitalWrite(uint8_t Pin_num, uint8_t Pin_val)
+pinMode(pin_t pin, uint8_t pinModeVal)
 
-digitalRead(uint8_t Pin_num)
+digitalWrite(pin_t pin, uint8_t pinValue)
 
-pinMode(uint8_t Pin_num, uint8_t Pin_dir, uint8_t io_stat)
+digitalRead(pin_t pin);
 
 Codded by GAGHL
