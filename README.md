@@ -1,4 +1,4 @@
-# GAGHL_AVR_GPIO
+# GAGHL AVR GPIO
 AVR GPIO
 
 pinMode(pin_t pin, uint8_t pinModeVal)
