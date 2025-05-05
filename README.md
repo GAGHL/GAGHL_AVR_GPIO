@@ -66,8 +66,20 @@ int main(){
 
 ## License
 
-This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0).
+This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
 
-You can read the full license text [here](https://creativecommons.org/licenses/by-nc/4.0/legalcode).
+You are free to:
+- Share — copy and redistribute the material in any medium or format
+- Adapt — remix, transform, and build upon the material
 
-Feel free to share and adapt this project for non-commercial purposes, but make sure to give appropriate credit and don't use it for commercial purposes.
+Under the following terms:
+- **Attribution** — You must give appropriate credit to the author (GAGHL).
+- **NonCommercial** — You may not use the material for commercial purposes without explicit permission.
+
+For more information, see the full license: [https://creativecommons.org/licenses/by-nc/4.0/](https://creativecommons.org/licenses/by-nc/4.0/)
+
+© 2025 GAGHL. All rights reserved.
+
+## Author
+
+Developed by [GAGHL](https://github.com/GAGHL)
