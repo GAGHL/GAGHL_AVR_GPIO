@@ -7,7 +7,9 @@ pinMode(pin_t pin, uint8_t pinModeVal)
 
 digitalWrite(pin_t pin, uint8_t pinValue)
 
-digitalRead(pin_t pin);
+digitalToggle(pin_t pin)
+
+digitalRead(pin_t pin)
 
 ## License
 
