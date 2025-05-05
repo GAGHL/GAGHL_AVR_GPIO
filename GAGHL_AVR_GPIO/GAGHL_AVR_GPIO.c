@@ -217,6 +217,65 @@ void digitalWrite(pin_t pin, uint8_t pinValue){
 }
 
 /**
+ * @brief  Toggle the value of a specific pin (invert HIGH/LOW).
+ * 
+ * This function inverts the current output state of the specified pin.
+ * It uses XOR to flip the corresponding bit in the port register.
+ *
+ * @param   pin       The pin number (0 to 55) that will be toggled.
+ * 
+ * @return  None
+ */
+void digitalToggle(pin_t pin){
+	#ifdef PORTA
+	if(pin<=7){                                                 //PORTA
+		PORTA ^= (1<<pin);
+	}
+	#endif
+	
+	#ifdef PORTB
+	else if(pin>=8 && pin<=15){                             //PORTB
+		pin-=8;
+		PORTB ^= (1<<pin);
+	}
+	#endif
+	
+	#ifdef PORTC
+	else if(pin>=16 && pin<=23){                             //PORTC
+		pin-=16;
+		PORTC ^= (1<<pin);
+	}
+	#endif
+	
+	#ifdef PORTD
+	else if(pin>=24 && pin<=31){                             //PORTD
+		pin-=24;
+		PORTD ^= (1<<pin);
+	}
+	#endif
+	
+	#ifdef PORTE
+	else if(pin>=32 && pin<=39){                             //PORTE
+		pin-=32;
+		PORTE ^= (1<<pin);
+	}
+	#endif
+	
+	#ifdef PORTF
+	else if(pin>=40 && pin<=47){                             //PORTF
+		pin-=40;
+		PORTF ^= (1<<pin);
+	}
+	#endif
+	
+	#ifdef PORTG
+	else if(pin>=48 && pin<=55){                             //PORTG
+		pin-=48;
+		PORTG ^= (1<<pin);
+	}
+	#endif
+}
+/**
  * @brief  Read the value of a specific pin.
  * 
  * This function reads the current input state of the specified pin. It checks 

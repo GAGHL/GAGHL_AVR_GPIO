@@ -9,6 +9,20 @@
  * Author: GAGHL
  */
 
+/*
+ * This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0).
+ * 
+ * You are free to:
+ * - Share: Copy and redistribute the material in any medium or format.
+ * - Adapt: Remix, transform, and build upon the material.
+ * 
+ * The following conditions apply:
+ * - Attribution: You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+ * - NonCommercial: You may not use the material for commercial purposes.
+ * 
+ * Full license text: https://creativecommons.org/licenses/by-nc/4.0/legalcode
+ */
+
 #ifndef GAGHL_AVR_GPIO_H_
 #define GAGHL_AVR_GPIO_H_
 
@@ -20,6 +34,9 @@
 #define LOW           0
 #define HIGH          1
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /**
  * @enum pin_t
@@ -41,7 +58,13 @@ void pinMode(pin_t pin, uint8_t pinModeVal);
 
 void digitalWrite(pin_t pin, uint8_t pinValue);
 
+void digitalToggle(pin_t pin);
+
 int8_t digitalRead(pin_t pin);
 
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif //GAGHL_AVR_GPIO
