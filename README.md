@@ -48,7 +48,7 @@ This function reads the current input state of a specific pin (0 to 55). It retu
 
 To use this library in your AVR projects, simply include the header file `GAGHL_AVR_GPIO.h` in your source code and use the provided functions to control the GPIO pins.
 
-### Example Usage
+### Example
 
 ```c
 #include "GAGHL_AVR_GPIO.h"
