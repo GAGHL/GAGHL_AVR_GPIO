@@ -275,6 +275,143 @@ void digitalToggle(pin_t pin){
 	}
 	#endif
 }
+
+/**
+ * @brief  Generate a PWM signal with a specific duty cycle on a given pin.
+ * 
+ * This function sets up the relevant timer and output compare registers to 
+ * generate a PWM waveform on the specified pin with the desired duty cycle. 
+ * It supports different ATmega microcontrollers and automatically configures 
+ * the proper registers based on the selected pin and microcontroller.
+ * 
+ * @param   pin         The PWM-capable pin to output the PWM signal on.
+ *                      Only specific pins on the supported microcontrollers
+ *                      (ATmega32A, ATmega328P) are valid for PWM output.
+ * 
+ * @param   duty_cycle  The duty cycle for the PWM signal, as a percentage (0-100).
+ *                      If set to 0, the PWM output is disabled and the pin is pulled LOW.
+ * 
+ * @return  None
+ */
+void digitalPWM(pin_t pin, uint8_t duty_cycle){
+	
+	if(duty_cycle > 100) duty_cycle = 100;                           // Clamp duty cycle to max 100%
+	duty_cycle=duty_cycle*255/100;                                   // Convert duty cycle percentage to 8-bit value (0-255)
+	
+	#if defined(__AVR_ATmega32A__)
+		if(pin==PB_3){                                               // ======= Timer0 - OC0 (PB3) =======
+			pinMode(pin,OUTPUT);
+			if(duty_cycle==0){
+				TCCR0 &= ~((1<<COM01)|(1<<COM00));                   // Disable PWM and write LOW
+				digitalWrite(pin,LOW);
+				return;
+			}
+			OCR0=duty_cycle;
+			TCCR0|=(1<<WGM01)|(1<<WGM00)|(1<<CS01)|(1<<COM01);
+		}
+		else if(pin==PD_5){                                          // ======= Timer1 - OC1A (PD5) =======
+			pinMode(pin,OUTPUT);
+			if(duty_cycle==0){
+				TCCR1A &= ~((1<<COM1A1)|(1<<COM1A0));                // Disable PWM and write LOW
+				digitalWrite(pin,LOW);
+				return;
+			}
+			OCR1A=duty_cycle;
+			TCCR1A|=(1<<COM1A1)|(1<<WGM10);
+			TCCR1B|=(1<<WGM12)|(1<<CS11);
+		}
+		else if(pin==PD_4){                                          // ======= Timer1 - OC1B (PD4) =======
+			pinMode(pin,OUTPUT);
+			if(duty_cycle==0){
+				TCCR1A &= ~((1<<COM1B1)|(1<<COM1B0));                // Disable PWM and write LOW
+				digitalWrite(pin,LOW);
+				return;
+			}
+			OCR1B=duty_cycle;
+			TCCR1A|=(1<<COM1B1)|(1<<WGM10);
+			TCCR1B|=(1<<WGM12)|(1<<CS11);
+		}
+		else if(pin==PD_7){                                          // ======= Timer2 - OC2 (PD7) =======
+			pinMode(pin,OUTPUT);
+			if(duty_cycle==0){
+				TCCR2 &= ~((1<<COM21)|(1<<COM20));                   // Disable PWM and write LOW
+				digitalWrite(pin,LOW);
+				return;
+			}
+			OCR2=duty_cycle;
+			TCCR2|=(1<<WGM21)|(1<<WGM20)|(1<<CS21)|(1<<COM21);
+		}
+	#elif defined(__AVR_ATmega328P__)
+		if(pin==PD_6){                                               // ======= Timer0 - OC0A (PD6) =======
+			pinMode(pin,OUTPUT);
+			if(duty_cycle==0){
+				TCCR0A &= ~((1<<COM0A1)|(1<<COM0A0));                // Disable PWM and write LOW
+				digitalWrite(pin,LOW);
+				return;
+			}
+			OCR0A=duty_cycle;
+			TCCR0A|=(1<<COM0A1)|(1<<WGM01)|(1<<WGM00);
+			TCCR0B|=(1<<CS01);
+		}
+		else if(pin==PD_5){                                          // ======= Timer0 - OC0B (PD5) =======
+			pinMode(pin,OUTPUT);
+			if(duty_cycle==0){
+				TCCR0A &= ~((1<<COM0B1)|(1<<COM0B0));                // Disable PWM and write LOW
+				digitalWrite(pin,LOW);
+				return;
+			}
+			OCR0B=duty_cycle;
+			TCCR0A|=(1<<COM0B1)|(1<<WGM01)|(1<<WGM00);
+			TCCR0B|=(1<<CS01);
+		}
+		else if(pin==PB_1){                                          // ======= Timer1 - OC1A (PB1) =======
+			pinMode(pin,OUTPUT);
+			if(duty_cycle==0){
+				TCCR1A &= ~((1<<COM1A1)|(1<<COM1A0));                // Disable PWM and write LOW
+				digitalWrite(pin,LOW);
+				return;
+			}
+			OCR1A=duty_cycle;
+			TCCR1A|=(1<<COM1A1)|(1<<WGM10);
+			TCCR1B|=(1<<WGM12)|(1<<CS11)|(1<<CS10);
+		}
+		else if(pin==PB_2){                                          // ======= Timer1 - OC1B (PB2) =======
+			pinMode(pin,OUTPUT);
+			if(duty_cycle==0){
+				TCCR1A &= ~((1<<COM1B1)|(1<<COM1B0));                // Disable PWM and write LOW
+				digitalWrite(pin,LOW);
+				return;
+			}
+			OCR1B=duty_cycle;
+			TCCR1A|=(1<<COM1B1)|(1<<WGM10);
+			TCCR1B|=(1<<WGM12)|(1<<CS11)|(1<<CS10);
+		}
+		else if(pin==PB_3){                                          // ======= Timer2 - OC2A (PB3) =======
+			pinMode(pin,OUTPUT);
+			if(duty_cycle==0){
+				TCCR2A &= ~((1<<COM2A1)|(1<<COM2A0));                // Disable PWM and write LOW
+				digitalWrite(pin,LOW);
+				return;
+			}
+			OCR2A=duty_cycle;
+			TCCR2A|=(1<<COM2A1)|(1<<WGM21)|(1<<WGM20);
+			TCCR2B|=(1<<CS21);
+		}
+		else if(pin==PD_3){                                          // ======= Timer1 - OC1B (PD3) =======
+			pinMode(pin,OUTPUT);
+			if(duty_cycle==0){
+				TCCR2A &= ~((1<<COM2B1)|(1<<COM2B0));                // Disable PWM and write LOW
+				digitalWrite(pin,LOW);
+				return;
+			}
+			OCR2B=duty_cycle;
+			TCCR2A|=(1<<COM2B1)|(1<<WGM21)|(1<<WGM20);
+			TCCR2B|=(1<<CS21);
+		}
+	#else
+	#error "Unsupported microcontroller"
+	#endif
+}
 /**
  * @brief  Read the value of a specific pin.
  * 

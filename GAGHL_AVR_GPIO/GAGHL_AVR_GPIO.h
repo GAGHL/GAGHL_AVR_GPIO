@@ -28,6 +28,14 @@
 
 #include <avr/io.h>
 
+#if defined(__AVR_ATmega32__)
+	#define MICRO_TYPE "ATmega32"
+#elif defined(__AVR_ATmega328P__)
+	#define MICRO_TYPE "ATmega328"
+#else
+	#define MICRO_TYPE "Unknown"
+#endif
+
 #define INPUT         0
 #define OUTPUT        1
 #define INPUT_PULLUP  2
@@ -59,6 +67,8 @@ void pinMode(pin_t pin, uint8_t pinModeVal);
 void digitalWrite(pin_t pin, uint8_t pinValue);
 
 void digitalToggle(pin_t pin);
+
+void digitalPWM(pin_t pin, uint8_t duty_cycle);
 
 int8_t digitalRead(pin_t pin);
 
