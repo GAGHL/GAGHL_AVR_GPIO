@@ -8,6 +8,7 @@ This library provides a set of functions for controlling the GPIO pins of AVR mi
 - **Pin Mode Configuration**: Set the pin modes (INPUT, OUTPUT, INPUT_PULLUP) for GPIO pins.
 - **Digital Write and Read**: Read and write digital values (HIGH or LOW) to the pins.
 - **Pin Toggle**: Toggle the value of a specific pin (invert HIGH/LOW).
+- **PWM Control**: Generate Pulse Width Modulation (PWM) signals with adjustable duty cycle on specific pins.
 - **AVR GCC Compatibility**: Specifically designed for use with AVR microcontrollers and the GCC compiler.
 
 
@@ -35,6 +36,13 @@ This function toggles the output value of a specific pin (0 to 55). It inverts t
 
 - **pin**: The pin number to toggle (0 to 55).
 
+### `void digitalPWM(pin_t pin, uint8_t duty_cycle)`
+This function generates a PWM signal with a specified duty cycle on a given pin. The duty cycle is expressed as a percentage (0-100).
+
+- **pin**: The PWM-capable pin to output the PWM signal on.
+- **duty_cycle**: The duty cycle for the PWM signal, as a percentage (0-100). If set to 0, the PWM output is disabled and the pin is pulled LOW.
+
+
 ### `int8_t digitalRead(pin_t pin)`
 This function reads the current input state of a specific pin (0 to 55). It returns `HIGH` if the pin is high and `LOW` if the pin is low.
 
@@ -54,8 +62,8 @@ To use this library in your AVR projects, simply include the header file `GAGHL_
 #include "GAGHL_AVR_GPIO.h"
 
 int main(){
-    pinMode(PA_0, OUTPUT);     // Set PA0 as an output pin
-    digitalWrite(PA_0, HIGH);  // Set PA0 to HIGH
+    pinMode(PA_0,OUTPUT);     // Set PA0 as an output pin
+    digitalWrite(PA_0,HIGH);  // Set PA0 to HIGH
     while(1){
         // Toggle PA0 every second
         digitalToggle(PA_0);
@@ -64,6 +72,23 @@ int main(){
 }
 ```
 
+```c
+#include "GAGHL_AVR_GPIO.h"
+
+int main(){
+    pinMode(PB_3, OUTPUT);     // Set PB3 as an output pin (PWM pin)
+    while(1){
+        // Generate a PWM signal with 50% duty cycle on PB3
+        digitalPWM(PB_3,50);
+        _delay_ms(1000);
+        
+        // Generate a PWM signal with 90% duty cycle on PD4
+        digitalPWM(PD_4,90);
+        _delay_ms(1000);
+        
+    }
+}
+```
 ## License
 
 This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
