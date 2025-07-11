@@ -1,15 +1,18 @@
-# GAGHL AVR GPIO Library
-In the name of GOD
+<h1 align="center">In the name of GOD</h1>
 
-This library provides a set of functions for controlling the GPIO pins of AVR microcontrollers using a syntax similar to the popular Arduino environment. It is designed to allow easy integration with AVR projects while maintaining compatibility with the commonly used Arduino functions.
+# GAGHL_AVR_GPIO
 
-## Features
+**GPIO driver for AVR microcontrollers**
 
-- **Pin Mode Configuration**: Set the pin modes (INPUT, OUTPUT, INPUT_PULLUP) for GPIO pins.
-- **Digital Write and Read**: Read and write digital values (HIGH or LOW) to the pins.
-- **Pin Toggle**: Toggle the value of a specific pin (invert HIGH/LOW).
-- **PWM Control**: Generate Pulse Width Modulation (PWM) signals with adjustable duty cycle on specific pins.
-- **AVR GCC Compatibility**: Specifically designed for use with AVR microcontrollers and the GCC compiler.
+This library provides a set of functions for controlling the GPIO pins of AVR microcontrollers using a syntax similar to the Arduino environment. It is designed to allow easy integration with AVR projects while maintaining compatibility with the commonly used Arduino functions.
+
+## 📦 Features
+
+- ✅ **Pin Mode Configuration**: Set the pin modes (INPUT, OUTPUT, INPUT_PULLUP) for GPIO pins.
+- ✅ **Digital Write and Read**: Read and write digital values (HIGH or LOW) to the pins.
+- ✅ **Pin Toggle**: Toggle the value of a specific pin (invert HIGH/LOW).
+- ✅ **PWM Control**: Generate Pulse Width Modulation (PWM) signals with adjustable duty cycle on specific pins.
+- ✅ **AVR GCC Compatibility**: Specifically designed for use with AVR microcontrollers and the GCC compiler.
 
 
 ## Functions
