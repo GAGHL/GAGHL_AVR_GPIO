@@ -13,16 +13,18 @@ This library provides a set of functions for controlling the GPIO pins of AVR mi
 - ✅ **Pin Toggle**: Toggle the value of a specific pin (invert HIGH/LOW).
 - ✅ **PWM Control**: Generate Pulse Width Modulation (PWM) signals with adjustable duty cycle on specific pins.
 - ✅ **AVR GCC Compatibility**: Specifically designed for use with AVR microcontrollers and the GCC compiler.
+- ✅ **Port Read Support**: Read the 8-bit value of the entire port directly or via pin reference.
 
 ## 📚 API Overview
 
-| Function          | Parameters                      | Description                                                                |
-| ----------------- | ------------------------------- | -------------------------------------------------------------------------- |
-| `pinMode()`       | `pin_t pin, uint8_t pinModeVal` | Sets the mode of a pin (INPUT, OUTPUT, or INPUT\_PULLUP)                   |
-| `digitalWrite()`  | `pin_t pin, uint8_t pinValue`   | Writes a digital value (HIGH or LOW) to the specified pin                  |
-| `digitalToggle()` | `pin_t pin`                     | Toggles the digital state of a pin (HIGH ↔ LOW)                            |
-| `digitalRead()`   | `pin_t pin`                     | Reads the current digital state of the specified pin (returns HIGH or LOW) |
-| `digitalPWM()`    | `pin_t pin, uint8_t duty_cycle` | Generates a PWM signal on a pin with the specified duty cycle (0–100%)     |
+| Function           | Parameters                      | Description                                                                        |
+| ------------------ | ------------------------------- | ---------------------------------------------------------------------------------- |
+| `pinMode()`        | `pin_t pin, uint8_t pinModeVal` | Sets the mode of a pin (INPUT, OUTPUT, or INPUT\_PULLUP)                           |
+| `digitalWrite()`   | `pin_t pin, uint8_t pinValue`   | Writes a digital value (HIGH or LOW) to the specified pin                          |
+| `digitalToggle()`  | `pin_t pin`                     | Toggles the digital state of a pin (HIGH ↔ LOW)                                    |
+| `digitalRead()`    | `pin_t pin`                     | Reads the current digital state of the specified pin (returns HIGH or LOW)         |
+| `digitalReadPort()`| `pin_t pin`                     | Reads the full 8-bit value of the port related to the pin or specific port address |
+| `digitalPWM()`     | `pin_t pin, uint8_t duty_cycle` | Generates a PWM signal on a pin with the specified duty cycle (0–100%)             |
 
 
 ## 🚀 Getting Started
