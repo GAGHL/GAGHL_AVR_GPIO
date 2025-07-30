@@ -5,8 +5,8 @@
  *  Author: GAGHL
  */ 
 
+#include <stdint.h>
 #include "GAGHL_AVR_GPIO.h"
-
 
 /**
  * @brief  Set the pin mode (INPUT, OUTPUT, or INPUT_PULLUP) for a specific pin.
@@ -412,6 +412,7 @@ void digitalPWM(pin_t pin, uint8_t duty_cycle){
 	#error "Unsupported microcontroller"
 	#endif
 }
+
 /**
  * @brief  Read the value of a specific pin.
  * 
@@ -473,4 +474,60 @@ int8_t digitalRead(pin_t pin){
 	#endif
 	
 	return -1;
+}
+
+/**
+ * @brief  Read the input value of the entire port associated with the given pin.
+ *
+ * This function reads all 8 bits of the port (PINx) corresponding to the provided pin.
+ *
+ * @param   pin   Any valid pin_t value (PA_0 to PF_7).
+ *
+ * @return  8-bit value of the PINx register (e.g., PINA, PINB, ...).
+ *          Returns -1 if the pin is invalid or unsupported.
+ */
+int8_t digitalReadPort(pin_t pin) {
+	#ifdef PINA
+	if(pin <= 7){ // PORTA
+		return PINA;
+	}
+	#endif
+	
+	#ifdef PINB
+	if(pin >= 8 && pin <= 15){							   // PORTB
+		return PINB;
+	}
+	#endif
+	
+	#ifdef PINC
+	if(pin >= 16 && pin <= 23){ 						   // PORTC
+		return PINC;
+	}
+	#endif
+	
+	#ifdef PIND
+	if(pin >= 24 && pin <= 31){ 						   // PORTD
+		return PIND;
+	}
+	#endif
+	
+	#ifdef PINE
+	if(pin >= 32 && pin <= 39){ 						   // PORTE
+		return PINE;
+	}
+	#endif
+	
+	#ifdef PINF
+	if(pin >= 40 && pin <= 47){ 						   // PORTF
+		return PINF;
+	}
+	#endif
+	
+	#ifdef PING
+	if(pin >= 48 && pin <= 55){							   // PORTG
+		return PING;
+	}
+	#endif
+
+	return -1; // Invalid pin
 }
