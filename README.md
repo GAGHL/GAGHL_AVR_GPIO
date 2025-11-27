@@ -99,7 +99,7 @@ Under the following terms:
 
 For more information, see the full license: [https://creativecommons.org/licenses/by-nc/4.0/](https://creativecommons.org/licenses/by-nc/4.0/)
 
-© 2025 GAGHL. All rights reserved.
+© 2025 GAGHL
 
 ## Author
 
