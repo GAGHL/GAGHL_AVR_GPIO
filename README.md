@@ -42,13 +42,17 @@ Copy these files into your AVR project:
 ```c
 #include "GAGHL_AVR_GPIO.h"
 
-int main(){
-    pinMode(PA_0,OUTPUT);     // Set PA0 as an output pin
-    digitalWrite(PA_0,HIGH);  // Set PA0 to HIGH
-    while(1){
+int main() {
+
+    pinMode(PA_0, OUTPUT);     // Set PA0 as an output pin
+    digitalWrite(PA_0, HIGH);  // Set PA0 to HIGH
+
+    while(1) {
+
         // Toggle PA0 every second
         digitalToggle(PA_0);
         _delay_ms(1000);
+
     }
 }
 ```
@@ -56,15 +60,18 @@ int main(){
 ```c
 #include "GAGHL_AVR_GPIO.h"
 
-int main(){
+int main() {
+
     pinMode(PB_3, OUTPUT);     // Set PB3 as an output pin (PWM pin)
-    while(1){
+
+    while(1) {
+
         // Generate a PWM signal with 50% duty cycle on PB3
-        digitalPWM(PB_3,50);
+        digitalPWM(PB_3, 50);
         _delay_ms(1000);
         
         // Generate a PWM signal with 90% duty cycle on PD4
-        digitalPWM(PD_4,90);
+        digitalPWM(PD_4, 90);
         _delay_ms(1000);
         
     }
