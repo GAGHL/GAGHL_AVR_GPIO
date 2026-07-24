@@ -94,17 +94,17 @@ If you’re using this library in your project, feel free to let me know — I�
 
 ## License
 
-This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
+This project is licensed under the MIT License.
 
 You are free to:
-- Share — copy and redistribute the material in any medium or format
-- Adapt — remix, transform, and build upon the material
+- Use, copy, and modify the code for any purpose, including commercial use
+- Distribute and sublicense the software
 
 Under the following terms:
-- **Attribution** — You must give appropriate credit to the author (GAGHL).
-- **NonCommercial** — You may not use the material for commercial purposes without explicit permission.
+- **Attribution** — You must include the original copyright notice and license text in any copy or substantial portion of the software.
+- The software is provided "as is", without warranty of any kind.
 
-For more information, see the full license: [https://creativecommons.org/licenses/by-nc/4.0/](https://creativecommons.org/licenses/by-nc/4.0/)
+For more information, see the full license: [LICENSE](LICENSE)
 
 © 2025 GAGHL
 
